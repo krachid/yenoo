@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Support Dosely — Help Keep It Free</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0D0F14;--surface:#161B25;--elevated:#1E2535;--border:#2A3348;--text:#E8EDF5;--muted:#8C9AB0;--accent:#14B8A6;--accent-dim:#0D7A72;--gold:#F59E0B}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;min-height:100vh}
+.blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.blob-1{width:500px;height:500px;background:rgba(20,184,166,.07);top:-100px;right:-100px}
+.blob-2{width:400px;height:400px;background:rgba(59,130,246,.05);bottom:100px;left:-100px}
+.page{position:relative;z-index:1}
+header{display:flex;align-items:center;justify-content:space-between;padding:24px 40px;border-bottom:1px solid var(--border);backdrop-filter:blur(12px);position:sticky;top:0;background:rgba(13,15,20,.85);z-index:10}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),var(--accent-dim));border-radius:10px;display:flex;align-items:center;justify-content:center}
+.logo-name{font-family:'DM Serif Display',serif;font-size:22px;color:var(--text)}
+.header-tag{background:rgba(20,184,166,.12);color:var(--accent);border:1px solid rgba(20,184,166,.25);border-radius:999px;font-size:12px;font-weight:600;padding:4px 12px}
+.hero{text-align:center;padding:100px 24px 80px;max-width:700px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:var(--gold);border-radius:999px;font-size:13px;font-weight:600;padding:6px 16px;margin-bottom:32px}
+.hero-eyebrow::before{content:'♥';font-size:14px}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);line-height:1.1;margin-bottom:24px;letter-spacing:-.5px}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero-sub{font-size:18px;color:var(--muted);font-weight:300;max-width:540px;margin:0 auto 48px;line-height:1.65}
+.hero-sub strong{color:var(--text);font-weight:500}
+.donate-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:48px 40px;max-width:560px;margin:0 auto 80px;text-align:center}
+.amount-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.amount-btn{background:var(--elevated);border:1px solid var(--border);border-radius:12px;padding:14px 8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:all .18s;display:flex;flex-direction:column;align-items:center;gap:4px}
+.amount-btn:hover,.amount-btn.selected{border-color:var(--accent);background:rgba(20,184,166,.12);color:var(--accent)}
+.amount-btn .emoji{font-size:18px}
+.amount-btn .label{font-size:11px;color:var(--muted);font-weight:400}
+.custom-row{display:flex;align-items:center;gap:10px;margin-bottom:24px;background:var(--elevated);border:1px solid var(--border);border-radius:12px;padding:4px 4px 4px 16px}
+.custom-row:focus-within{border-color:var(--accent)}
+.custom-row span{color:var(--muted);font-size:15px;flex-shrink:0}
+.custom-row input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;padding:10px 0}
+.donate-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--accent);color:#0D0F14;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;border:none;border-radius:14px;padding:18px 24px;cursor:pointer;text-decoration:none;transition:all .2s}
+.donate-btn:hover{background:#0fd4c0;transform:translateY(-1px)}
+.donate-btn svg{width:20px;height:20px;flex-shrink:0}
+.secure-note{margin-top:16px;font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:6px}
+.secure-note::before{content:'🔒';font-size:11px}
+.divider{display:flex;align-items:center;gap:12px;margin:24px 0;color:var(--muted);font-size:12px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.why-section{max-width:880px;margin:0 auto 80px;padding:0 24px}
+.section-eyebrow{text-align:center;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(26px,4vw,36px);text-align:center;margin-bottom:48px;line-height:1.2}
+.feature-grid,.impact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card,.impact-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px 24px}
+.impact-card{text-align:center}
+.feature-icon{width:44px;height:44px;border-radius:12px;background:rgba(20,184,166,.1);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.feature-name{font-weight:600;font-size:15px;color:var(--text);margin-bottom:6px}
+.feature-desc{font-size:13.5px;color:var(--muted);line-height:1.6}
+.impact-amount{font-family:'DM Serif Display',serif;font-size:28px;color:var(--accent);margin-bottom:4px}
+.impact-label{font-size:14px;color:var(--muted);line-height:1.5}
+.message-section{max-width:640px;margin:0 auto 80px;padding:0 24px;text-align:center}
+.message-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:40px 40px 36px}
+.avatar{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--accent-dim));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 20px}
+.message-text{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:20px;font-style:italic}
+.message-text strong{color:var(--text);font-style:normal}
+.message-sig{font-size:14px;color:var(--muted)}
+.message-sig strong{color:var(--text)}
+footer{border-top:1px solid var(--border);padding:32px 40px;text-align:center;font-size:13px;color:var(--muted)}
+footer a{color:var(--accent);text-decoration:none}
+@media(max-width:700px){header{padding:16px 20px}.hero{padding:64px 20px 48px}.donate-card{padding:32px 20px;border-radius:16px;margin:0 16px 60px}.amount-grid{grid-template-columns:repeat(2,1fr)}.feature-grid,.impact-cards{grid-template-columns:1fr}.why-section,.message-section{padding:0 16px}footer{padding:24px 20px}}
+</style></head>
+<body>
+<div class="blob blob-1"></div><div class="blob blob-2"></div>
+<div class="page">
+<header><a class="logo" href="#"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><span class="logo-name">Dosely</span></a><span class="header-tag">Open Source</span></header>
+<section class="hero"><div class="hero-eyebrow">Support independent development</div><h1>Help keep <em>Dosely</em><br>free for everyone</h1><p class="hero-sub">Dosely is a <strong>free, open-source</strong> medication reminder and health tracking app built for patients who need their schedule to never fail them. Your donation directly funds server costs, push notification delivery, and new features.</p></section>
+<div class="donate-card" id="donate">
+<h2 style="font-family:'DM Serif Display',serif;font-size:22px;margin-bottom:8px;">Choose an amount</h2>
+<p style="font-size:14px;color:var(--muted);margin-bottom:28px;">Every contribution keeps the app running and ad-free.</p>
+<div class="amount-grid">
+<button class="amount-btn" onclick="sel(3,this)"><span class="emoji">☕</span><span>$3</span><span class="label">Coffee</span></button>
+<button class="amount-btn selected" onclick="sel(5,this)"><span class="emoji">🌱</span><span>$5</span><span class="label">Supporter</span></button>
+<button class="amount-btn" onclick="sel(10,this)"><span class="emoji">💊</span><span>$10</span><span class="label">Contributor</span></button>
+<button class="amount-btn" onclick="sel(25,this)"><span class="emoji">🏆</span><span>$25</span><span class="label">Champion</span></button>
+</div>
+<div class="custom-row"><span>$</span><input type="number" id="ca" placeholder="Custom amount" min="1" oninput="hc(this)"/></div>
+<a id="dl" href="https://www.paypal.com/donate?business=ra_kh%40yahoo.fr&amount=5&currency_code=USD&item_name=Dosely+App+Support" target="_blank" rel="noopener" class="donate-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.067 8.478c.492.315.844.825.983 1.39.352 1.448-.643 3.134-2.24 3.817-.463.197-.96.308-1.457.362-.16.018-.319.026-.476.026h-1.978l-.487 2.867H13.05l-.08.447H10.82l1.34-7.889h3.736c.75 0 1.453.132 2.018.376a3.59 3.59 0 012.153.604zM8.375 5.5H5.25L3 17.5h2.357l.563-3.284h1.863c1.578 0 2.993-.422 4.025-1.143 1.208-.845 1.89-2.11 1.89-3.534 0-.877-.279-1.615-.804-2.138C12.252 6.822 11.2 6.5 9.87 6.5H8.375V5.5zm.68 1H9.87c1.052 0 1.856.25 2.34.722.407.395.6.94.6 1.617 0 1.097-.534 2.08-1.476 2.726-.83.573-1.955.935-3.217.935H6.35l1.705-6z"/></svg>Donate via PayPal</a>
+<p class="secure-note">Secure payment via PayPal · No account required</p>
+<div class="divider">or</div>
+<a href="https://github.com/krachid/yenoo" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:14px;text-decoration:none" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>Star the repo on GitHub</a>
+</div>
+<section class="why-section"><div class="section-eyebrow">Where your money goes</div><h2 class="section-title">Every dollar directly funds the app</h2><div class="impact-cards"><div class="impact-card"><div class="impact-amount">$3</div><div class="impact-label">Covers one month of push notification delivery for 100 users</div></div><div class="impact-card"><div class="impact-amount">$10</div><div class="impact-label">Pays for server costs for one month of the API and database</div></div><div class="impact-card"><div class="impact-amount">$25</div><div class="impact-label">Sponsors a full feature — like doctor appointment reminders or PDF reports</div></div></div></section>
+<section class="why-section" style="margin-bottom:80px;"><div class="section-eyebrow">What you're supporting</div><h2 class="section-title">A health companion that never lets you down</h2><div class="feature-grid"><div class="feature-card"><div class="feature-icon">💊</div><div class="feature-name">Reliable reminders</div><div class="feature-desc">Three-layer notification delivery so your medication reminders fire every time, even offline.</div></div><div class="feature-card"><div class="feature-icon">📅</div><div class="feature-name">Doctor appointments</div><div class="feature-desc">Schedule, track, and log your medical visits with full outcome notes and follow-up reminders.</div></div><div class="feature-card"><div class="feature-icon">📈</div><div class="feature-name">Health tracking</div><div class="feature-desc">Log weight, blood pressure, glucose, and mood. See trends correlated with your adherence.</div></div><div class="feature-card"><div class="feature-icon">🌿</div><div class="feature-name">Supplement stacks</div><div class="feature-desc">Pre-built supplement templates for wellness, fitness, sleep, and more — set up in one tap.</div></div><div class="feature-card"><div class="feature-icon">🌙</div><div class="feature-name">Dark-first design</div><div class="feature-desc">Built dark by default. OLED-optimised. Easy on the eyes at any hour.</div></div><div class="feature-card"><div class="feature-icon">♿</div><div class="feature-name">Fully accessible</div><div class="feature-desc">WCAG 2.1 AA compliant. TalkBack support, large text, high contrast, one-handed use.</div></div></div></section>
+<section class="message-section"><div class="section-eyebrow">From the developer</div><h2 class="section-title" style="margin-bottom:28px;">Built with care,<br>kept free by choice</h2><div class="message-card"><div class="avatar">👋</div><p class="message-text">"I built Dosely because I saw people I care about struggling to remember their medications — and the apps that existed were either unreliable, cluttered, or inaccessible. <strong>Dosely is free and will stay free</strong>, with no ads and no selling of health data. Your donation helps me cover server costs and carve out time to keep building. Even a coffee means a lot."</p><div class="message-sig"><strong>Rachid K.</strong><br>Developer · <a href="https://github.com/krachid/yenoo" target="_blank" rel="noopener" style="color:var(--accent)">github.com/krachid/yenoo</a></div></div></section>
+<footer><p style="margin-bottom:8px;">Dosely is open source · <a href="https://github.com/krachid/yenoo" target="_blank" rel="noopener">GitHub</a> · Built with ♥ for patients everywhere</p><p style="font-size:12px;opacity:.6;">Donations processed securely by PayPal · ra_kh@yahoo.fr</p></footer>
+</div>
+<script>
+let amt=5;
+function sel(a,b){amt=a;document.querySelectorAll('.amount-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');document.getElementById('ca').value='';upd(a)}
+function hc(i){const v=parseFloat(i.value);document.querySelectorAll('.amount-btn').forEach(x=>x.classList.remove('selected'));if(v>0){amt=v;upd(v)}}
+function upd(a){document.getElementById('dl').href='https://www.paypal.com/donate?business=ra_kh%40yahoo.fr&amount='+Math.round(a*100)/100+'&currency_code=USD&item_name=Dosely+App+Support'}
+</script>
+</body></html>
