@@ -126,7 +126,7 @@ border: 1px solid rgba(255,255,255,0.1);
 color: var(--primary-color);
 }
 
-.copy-btn, .paypal-btn {
+.copy-btn, .paypal-btn, .contact-btn {
 background-color: var(--primary-color);
 color: #000;
 border: none;
@@ -137,10 +137,21 @@ cursor: pointer;
 text-decoration: none;
 font-size: 0.9rem;
 transition: background 0.2s;
+display: inline-flex;
+align-items: center;
+justify-content: center;
 }
 
-.copy-btn:hover, .paypal-btn:hover {
+.copy-btn:hover, .paypal-btn:hover, .contact-btn:hover {
 background-color: #34d399;
+}
+
+.contact-actions {
+margin-top: 24px;
+display: flex;
+justify-content: center;
+gap: 12px;
+flex-wrap: wrap;
 }
 
 .crypto-address {
@@ -211,6 +222,15 @@ margin-right: 0;
             <div class="donate-box" style="justify-content: center; background: transparent; border: none;">
                 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ra_kh@yahoo.fr&item_name=Support+Spendly&currency_code=USD" class="paypal-btn" style="background-color: #0070ba; color: white; padding: 12px 30px; font-size: 1.1rem; border-radius: 8px;" target="_blank">Donate with PayPal</a>
             </div>
+        </div>
+    </div>
+
+    <div class="card donation-section">
+        <h2>Contact Me</h2>
+        <p style="margin-bottom: 20px; color: var(--text-muted);">Questions, feedback, or partnership ideas? I'd love to hear from you.</p>
+        <div class="contact-actions">
+            <a href="mailto:ra_kh@yahoo.fr?subject=Spendly%20Inquiry" class="contact-btn">Email Me</a>
+            <a href="https://github.com/krachid" class="contact-btn" target="_blank">GitHub</a>
         </div>
     </div>
 </main>
